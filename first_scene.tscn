@@ -1,0 +1,26 @@
+[gd_scene load_steps=5 format=3 uid="uid://k5tpa0ffbo52"]
+
+[ext_resource type="PackedScene" uid="uid://cf3emyoet5j64" path="res://player.tscn" id="1_xofkj"]
+[ext_resource type="PackedScene" uid="uid://drc7e35103bi5" path="res://environment_tile_map.tscn" id="2_y3k5l"]
+[ext_resource type="Script" path="res://CaveEntrance.gd" id="3_6viit"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_p244o"]
+size = Vector2(31, 147)
+
+[node name="FirstScene" type="Node"]
+
+[node name="Player" parent="." instance=ExtResource("1_xofkj")]
+position = Vector2(99, 89)
+
+[node name="EnvironmentTileMap" parent="." instance=ExtResource("2_y3k5l")]
+
+[node name="CaveEntrance" type="Area2D" parent="."]
+position = Vector2(1150, 273)
+script = ExtResource("3_6viit")
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CaveEntrance"]
+position = Vector2(-5.5, 5.5)
+shape = SubResource("RectangleShape2D_p244o")
+
+[connection signal="body_entered" from="CaveEntrance" to="CaveEntrance" method="_on_body_entered"]

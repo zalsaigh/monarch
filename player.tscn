@@ -1,0 +1,27 @@
+[gd_scene load_steps=6 format=3 uid="uid://cf3emyoet5j64"]
+
+[ext_resource type="Script" path="res://player.gd" id="1_ft17v"]
+[ext_resource type="SpriteFrames" uid="uid://b06a3lft4r7qs" path="res://player_overworld.tres" id="2_3mhg4"]
+[ext_resource type="Script" path="res://AnimatedSprite2D.gd" id="3_vc6mf"]
+[ext_resource type="Script" path="res://CollisionShape2D.gd" id="4_85fth"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_8s1xf"]
+height = 38.0
+
+[node name="Player" type="CharacterBody2D"]
+position = Vector2(11, -3)
+script = ExtResource("1_ft17v")
+metadata/_edit_group_ = true
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = ExtResource("2_3mhg4")
+animation = &"down"
+script = ExtResource("3_vc6mf")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 1)
+shape = SubResource("CapsuleShape2D_8s1xf")
+script = ExtResource("4_85fth")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+zoom = Vector2(3, 3)

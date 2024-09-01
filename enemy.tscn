@@ -1,0 +1,27 @@
+[gd_scene load_steps=4 format=3 uid="uid://2nua1vp74qf7"]
+
+[ext_resource type="Texture2D" uid="uid://c8yfgqbm5q3c" path="res://art/sprites/overworld/monsters/M1 - Squrriel.png" id="1_6w7ix"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_50qwc"]
+radius = 31.0
+height = 66.0
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_e4tqt"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_6w7ix")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="Enemy" type="Area2D"]
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CapsuleShape2D_50qwc")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_e4tqt")

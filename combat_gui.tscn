@@ -1,0 +1,224 @@
+[gd_scene load_steps=13 format=3 uid="uid://c8aqefohsnwby"]
+
+[ext_resource type="Script" path="res://MenuButton.gd" id="1_3c7sb"]
+[ext_resource type="Script" path="res://combat_gui.gd" id="1_dgkmr"]
+[ext_resource type="Texture2D" uid="uid://cbusnos6bqvqa" path="res://art/environment/BG 2.0/BG/battleback1.png" id="2_l3qbx"]
+[ext_resource type="Texture2D" uid="uid://dh5dnlhmds4vb" path="res://art/combat/health_bars/gray_bar.png" id="3_d7a1w"]
+[ext_resource type="SpriteFrames" uid="uid://15f7dy8881tn" path="res://enemy.tres" id="4_oc1yd"]
+[ext_resource type="Texture2D" uid="uid://cx31yayiwhamx" path="res://art/combat/health_bars/green_bar.png" id="4_s3jjx"]
+[ext_resource type="FontFile" uid="uid://ddqgixpjigtib" path="res://fonts/NESCyrillic.ttf" id="7_0tnrd"]
+[ext_resource type="SpriteFrames" uid="uid://b615m8ddqw36u" path="res://player_combat.tres" id="8_hq5nd"]
+[ext_resource type="Script" path="res://PlayerSprite.gd" id="9_w2uuc"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_rf5w2"]
+texture = ExtResource("3_d7a1w")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_rcx4a"]
+texture = ExtResource("4_s3jjx")
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ewjaf"]
+bg_color = Color(0.201527, 0.201527, 0.201526, 1)
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+border_color = Color(1, 1, 1, 1)
+
+[node name="CombatGUI" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_dgkmr")
+
+[node name="MenuButton" type="MenuButton" parent="."]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 83.0
+offset_top = -175.0
+offset_right = 151.0
+offset_bottom = -144.0
+grow_vertical = 0
+text = "ATTACK"
+script = ExtResource("1_3c7sb")
+
+[node name="Background" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_l3qbx")
+
+[node name="EnemyContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -380.0
+offset_top = -132.0
+offset_right = -4.0
+offset_bottom = 141.0
+grow_horizontal = 0
+grow_vertical = 2
+
+[node name="EnemySprite" type="AnimatedSprite2D" parent="EnemyContainer"]
+position = Vector2(186, 110)
+scale = Vector2(2.6, 2.6)
+sprite_frames = ExtResource("4_oc1yd")
+flip_h = true
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="EnemyContainer/EnemySprite"]
+
+[node name="HealthBarControl" type="Control" parent="EnemyContainer"]
+layout_mode = 2
+
+[node name="HealthBar" type="ProgressBar" parent="EnemyContainer/HealthBarControl"]
+layout_mode = 2
+offset_top = -27.0
+offset_right = 376.0
+offset_bottom = 40.0
+theme_override_styles/background = SubResource("StyleBoxTexture_rf5w2")
+theme_override_styles/fill = SubResource("StyleBoxTexture_rcx4a")
+step = 1.0
+value = 60.0
+show_percentage = false
+
+[node name="Health" type="Label" parent="EnemyContainer/HealthBarControl/HealthBar"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -38.0
+offset_top = -15.5
+offset_right = 42.0
+offset_bottom = 16.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("7_0tnrd")
+theme_override_font_sizes/font_size = 32
+text = "15/24"
+
+[node name="PlayerContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 4.0
+offset_top = -132.0
+offset_right = 380.0
+offset_bottom = 141.0
+grow_vertical = 2
+
+[node name="PlayerSprite" type="AnimatedSprite2D" parent="PlayerContainer"]
+position = Vector2(-61, 110)
+scale = Vector2(5, 5)
+sprite_frames = ExtResource("8_hq5nd")
+animation = &"walk_right"
+flip_h = true
+script = ExtResource("9_w2uuc")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="PlayerContainer/PlayerSprite"]
+
+[node name="HealthBarControl" type="Control" parent="PlayerContainer"]
+layout_mode = 2
+
+[node name="HealthBar" type="ProgressBar" parent="PlayerContainer/HealthBarControl"]
+layout_mode = 2
+offset_top = -27.0
+offset_right = 376.0
+offset_bottom = 40.0
+theme_override_styles/background = SubResource("StyleBoxTexture_rf5w2")
+theme_override_styles/fill = SubResource("StyleBoxTexture_rcx4a")
+step = 1.0
+value = 60.0
+show_percentage = false
+
+[node name="Health" type="Label" parent="PlayerContainer/HealthBarControl/HealthBar"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -38.0
+offset_top = -15.5
+offset_right = 42.0
+offset_bottom = 16.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("7_0tnrd")
+theme_override_font_sizes/font_size = 32
+text = "15/24"
+
+[node name="ActionsPanel" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -190.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="MarginContainer" type="MarginContainer" parent="ActionsPanel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 27.0
+offset_top = 20.0
+offset_right = -47.0
+offset_bottom = -20.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ActionsContainer" type="HBoxContainer" parent="ActionsPanel/MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 35
+alignment = 1
+
+[node name="AttackButton" type="Button" parent="ActionsPanel/MarginContainer/ActionsContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_fonts/font = ExtResource("7_0tnrd")
+theme_override_font_sizes/font_size = 32
+theme_override_styles/normal = SubResource("StyleBoxFlat_ewjaf")
+text = "Attack"
+
+[node name="DefendButton" type="Button" parent="ActionsPanel/MarginContainer/ActionsContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_fonts/font = ExtResource("7_0tnrd")
+theme_override_font_sizes/font_size = 32
+theme_override_styles/normal = SubResource("StyleBoxFlat_ewjaf")
+text = "Defend"
+
+[node name="SpellsButton" type="Button" parent="ActionsPanel/MarginContainer/ActionsContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_fonts/font = ExtResource("7_0tnrd")
+theme_override_font_sizes/font_size = 32
+theme_override_styles/normal = SubResource("StyleBoxFlat_ewjaf")
+text = "Spells
+"
+
+[node name="StealButton" type="Button" parent="ActionsPanel/MarginContainer/ActionsContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_fonts/font = ExtResource("7_0tnrd")
+theme_override_font_sizes/font_size = 32
+theme_override_styles/normal = SubResource("StyleBoxFlat_ewjaf")
+text = "Steal
+"
+
+[connection signal="pressed" from="MenuButton" to="MenuButton" method="_on_pressed"]
