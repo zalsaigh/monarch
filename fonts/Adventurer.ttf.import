@@ -15,6 +15,7 @@ dest_files=["res://.godot/imported/Adventurer.ttf-7c7fa030670c8a6c450b1bb1a44052
 Rendering=null
 antialiasing=1
 generate_mipmaps=false
+disable_embedded_bitmaps=true
 multichannel_signed_distance_field=false
 msdf_pixel_range=8
 msdf_size=48
