@@ -12,6 +12,12 @@ func damage(attack: float):
 	
 	if health <= 0:
 		get_parent().queue_free()
+		
+func heal(heal: float):
+	health += heal
+	
+	if (health > MAX_HEALTH):
+		health = MAX_HEALTH;
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta: float) -> void:
