@@ -1,6 +1,7 @@
 [gd_scene load_steps=20 format=3 uid="uid://k5tpa0ffbo52"]
 
 [ext_resource type="PackedScene" uid="uid://cf3emyoet5j64" path="res://player.tscn" id="1_xofkj"]
+[ext_resource type="Script" path="res://HealthComponent.gd" id="2_v5fma"]
 [ext_resource type="PackedScene" uid="uid://drc7e35103bi5" path="res://environment_tile_map.tscn" id="2_y3k5l"]
 [ext_resource type="Script" path="res://CaveEntrance.gd" id="3_6viit"]
 [ext_resource type="Shader" uid="uid://dlyd078xhpgso" path="res://art/vfx/shaders/Fire.tres" id="4_n84ub"]
@@ -83,6 +84,9 @@ color_ramp = SubResource("GradientTexture1D_j3wsy")
 
 [node name="Player" parent="." instance=ExtResource("1_xofkj")]
 position = Vector2(99, 89)
+
+[node name="HealthComponent" type="Node2D" parent="Player"]
+script = ExtResource("2_v5fma")
 
 [node name="EnvironmentTileMap" parent="." instance=ExtResource("2_y3k5l")]
 
