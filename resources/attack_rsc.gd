@@ -10,7 +10,7 @@ class_name Attack extends Resource
 
 
 
-func create(p_name="Sample Attack", p_description="Sample Description", p_damage=10, p_accuracy=50) -> Attack:
+static func create(p_name="Sample Attack", p_description="Sample Description", p_damage=10, p_accuracy=50) -> Attack:
 	var instance = Attack.new()
 	instance.name = p_name
 	instance.description = p_description
