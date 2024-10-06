@@ -1,4 +1,4 @@
-extends Node2D
+extends Node
 
 @export var MAX_ATTACKS = 4
 @export var attacks : Array[Attack]
