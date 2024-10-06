@@ -19,3 +19,4 @@ func _process(delta):
 
 func _on_enemy_body_entered(body: PhysicsBody2D):
 	#combat_system.start_combat_scene()
+	pass
