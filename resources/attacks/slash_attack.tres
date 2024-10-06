@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="Attack" load_steps=2 format=3 uid="uid://hodugild11n5"]
+
+[ext_resource type="Script" path="res://resources/attack_rsc.gd" id="1_gfnbq"]
+
+[resource]
+script = ExtResource("1_gfnbq")
+name = "Slash Attack"
+description = "Slash attack for the character"
+damage = 30.0
+accuracy = 75.0
+attack_execution_sounds = Array[AudioStream]([])
