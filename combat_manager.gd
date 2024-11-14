@@ -2,7 +2,9 @@ extends Node
 
 @export var combatHUDScene : PackedScene
 
-func start_combat_scene(party : Array[CharacterBody2D], enemies : Array[Area2D]):
+func start_combat_scene(party : Array[CharacterBody2D], enemies : Array[Area2D], path):
+	combatHUDScene = load(path)
+	
 	if not combatHUDScene:
 		print("No combat scene selected! Please select one in the editor.")
 		return

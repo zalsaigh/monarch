@@ -18,5 +18,5 @@ func _process(delta):
 
 
 func _on_enemy_body_entered(body: PhysicsBody2D):
-	#combat_system.start_combat_scene()
-	pass
+	var enemy = get_tree().get_nodes_in_group("enemy")
+	CombatManager.start_combat_scene([player, player], [enemy], "res://combat_gui.tscn")
