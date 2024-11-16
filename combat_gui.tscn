@@ -7,6 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://cx31yayiwhamx" path="res://art/combat/health_bars/green_bar.png" id="4_s3jjx"]
 [ext_resource type="FontFile" uid="uid://ddqgixpjigtib" path="res://fonts/NESCyrillic.ttf" id="7_0tnrd"]
 [ext_resource type="SpriteFrames" uid="uid://b615m8ddqw36u" path="res://player_combat.tres" id="8_hq5nd"]
+[ext_resource type="PackedScene" uid="uid://dprvni6fde6dc" path="res://spells_component.tscn" id="9_a5vcp"]
 [ext_resource type="Script" path="res://PlayerSprite.gd" id="9_w2uuc"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_rf5w2"]
@@ -106,14 +107,18 @@ offset_bottom = 141.0
 grow_vertical = 2
 
 [node name="PlayerSprite" type="AnimatedSprite2D" parent="PlayerContainer"]
-position = Vector2(-61, 110)
+position = Vector2(252, 42)
 scale = Vector2(5, 5)
 sprite_frames = ExtResource("8_hq5nd")
-animation = &"walk_right"
+animation = &"idle"
+frame_progress = 0.935869
 flip_h = true
 script = ExtResource("9_w2uuc")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="PlayerContainer/PlayerSprite"]
+
+[node name="AnimationTimer" type="Timer" parent="PlayerContainer/PlayerSprite"]
+one_shot = true
 
 [node name="HealthBarControl" type="Control" parent="PlayerContainer"]
 layout_mode = 2
@@ -145,6 +150,8 @@ grow_vertical = 2
 theme_override_fonts/font = ExtResource("7_0tnrd")
 theme_override_font_sizes/font_size = 32
 text = "15/24"
+
+[node name="SpellsComponent" parent="PlayerContainer" instance=ExtResource("9_a5vcp")]
 
 [node name="ActionsPanel" type="Panel" parent="."]
 layout_mode = 1
@@ -195,6 +202,7 @@ size_flags_horizontal = 3
 theme_override_fonts/font = ExtResource("7_0tnrd")
 theme_override_font_sizes/font_size = 32
 theme_override_styles/normal = SubResource("StyleBoxFlat_ewjaf")
+action_mode = 0
 text = "Spells
 "
 
@@ -206,3 +214,7 @@ theme_override_font_sizes/font_size = 32
 theme_override_styles/normal = SubResource("StyleBoxFlat_ewjaf")
 text = "Steal
 "
+
+[connection signal="spell_animation" from="." to="PlayerContainer/PlayerSprite" method="_on_combat_gui_spell_animation"]
+[connection signal="timeout" from="PlayerContainer/PlayerSprite/AnimationTimer" to="PlayerContainer/PlayerSprite" method="_on_animation_timer_timeout"]
+[connection signal="pressed" from="ActionsPanel/MarginContainer/ActionsContainer/SpellsButton" to="." method="_on_spells_button_pressed"]
