@@ -22,7 +22,7 @@ func _on_spells_button_pressed() -> void:
 	
 	# TODO: get a specific unit's spell component instead of hardcoding player
 	var spells_component = $PlayerContainer/SpellsComponent
-	if spells_component.has_method("get_spell"):
+	if spells_component.is_in_group("has_spells"):
 		# Get the next spell (for debugging purposes)
 		var spell_index = curr_spell % spells_component.spells.size()
 		curr_spell += 1
@@ -31,4 +31,4 @@ func _on_spells_button_pressed() -> void:
 		var spell = spells_component.get_spell(spell_index)
 		if spell:
 			spell_animation.emit(spell.animation_time)
-			spell.cast()
+			spell._cast()

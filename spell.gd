@@ -24,6 +24,6 @@ enum ElementType {
 TODO: Pass in targets and modify their health component accordingly
 	  Use a map in case some spells are multi target with different effects?
 """ 
-func cast() -> void:
+func _cast() -> void:
 	print("Casting spell: ", spell_name)
 	print("Damaged target by ", damage, " damage!")
