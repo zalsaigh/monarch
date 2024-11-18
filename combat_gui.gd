@@ -16,6 +16,11 @@ func _process(delta):
 	pass
 
 
+
+func _on_attack_button_pressed():
+	pass # Replace with function body.
+
+
 # Called when Spells button is pressed (used to test the spells component)
 func _on_spells_button_pressed() -> void:
 	print("Clicked Spell Button")

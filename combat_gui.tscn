@@ -215,6 +215,7 @@ theme_override_styles/normal = SubResource("StyleBoxFlat_ewjaf")
 text = "Steal
 "
 
+[connection signal="pressed" from="ActionsPanel/MarginContainer/ActionsContainer/AttackButton" to="." method="_on_attack_button_pressed"]
 [connection signal="spell_animation" from="." to="PlayerContainer/PlayerSprite" method="_on_combat_gui_spell_animation"]
 [connection signal="timeout" from="PlayerContainer/PlayerSprite/AnimationTimer" to="PlayerContainer/PlayerSprite" method="_on_animation_timer_timeout"]
 [connection signal="pressed" from="ActionsPanel/MarginContainer/ActionsContainer/SpellsButton" to="." method="_on_spells_button_pressed"]
