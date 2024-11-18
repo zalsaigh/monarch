@@ -1,19 +1,15 @@
 class_name Attack extends Resource
 
-@export var name : String
-@export var description : String
-@export var damage : float
-@export_range(0,100) var accuracy : float
+@export var m_name : String
+@export var m_description : String
+@export var m_damage : float
+@export_range(0,100) var m_accuracy : float
 
 @export_category("Sounds")
 @export var attack_execution_sounds : Array[AudioStream] = [] # multiple to loop through
 
-
-
-static func create(p_name="Sample Attack", p_description="Sample Description", p_damage=10, p_accuracy=50) -> Attack:
-	var instance = Attack.new()
-	instance.name = p_name
-	instance.description = p_description
-	instance.damage = p_damage
-	instance.accuracy = clamp(p_accuracy, 0, 100) / 100 # percentage division for use in further maths
-	return instance
+func _init(name: String, description: String, damage=10, accuracy=50):
+	m_name = name
+	m_description = description
+	m_damage = damage
+	m_accuracy = clamp(accuracy, 0, 100) / 100 # percentage division for use in further maths
