@@ -13,7 +13,7 @@ layer_2/tile_data = PackedInt32Array(-327685, 458752, 2, -262149, 458752, 2, -19
 
 [node name="Player" parent="." instance=ExtResource("2_jttwt")]
 
-[node name="Enemy" parent="." instance=ExtResource("3_msafq")]
+[node name="Enemy" parent="." groups=["enemy"] instance=ExtResource("3_msafq")]
 position = Vector2(1048, 307)
 
 [connection signal="body_entered" from="Enemy" to="." method="_on_enemy_body_entered"]
