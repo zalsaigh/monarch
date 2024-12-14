@@ -12,7 +12,7 @@ func _ready():
 
 func generate_mitigated_attack(incoming_attack : Attack) -> Attack:
 	# Placeholder calculation
-	return Attack.create(
+	return Attack.new(
 		incoming_attack.name,
 		incoming_attack.description,
 		incoming_attack.damage - defence,
