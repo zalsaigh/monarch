@@ -33,5 +33,4 @@ zoom = Vector2(3, 3)
 
 [node name="AttackComponent" parent="." instance=ExtResource("5_xlubi")]
 attacks = Array[ExtResource("6_bcgn8")]([ExtResource("6_i87wm"), ExtResource("7_u0ent")])
-
 [node name="DefendComponent" parent="." instance=ExtResource("9_uluyt")]
