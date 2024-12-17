@@ -37,3 +37,17 @@ func _on_spells_button_pressed() -> void:
 		if spell:
 			spell_animation.emit(spell.animation_time)
 			spell._cast()
+
+
+func _on_steal_button_pressed():
+	print("Clicked Steal Button")
+	
+	var enemy_sprite_button = $EnemyContainer/EnemySprite/Button
+	enemy_sprite_button.disabled = false
+
+	print("Click an enemy to see what you can steal!")
+	
+
+
+func _on_enemy_sprite_button_pressed():
+	pass # Replace with function body.
