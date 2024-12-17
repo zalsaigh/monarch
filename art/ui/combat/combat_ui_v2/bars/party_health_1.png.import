@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dh5dnlhmds4vb"
-path="res://.godot/imported/gray_bar.png-7ccbc768f952d38c4a5f20fb57b86aa8.ctex"
+uid="uid://dl6rr1ufnii16"
+path="res://.godot/imported/party_health_1.png-c7182dbf826b426b69b3dd8ad9569941.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://art/combat/health_bars/gray_bar.png"
-dest_files=["res://.godot/imported/gray_bar.png-7ccbc768f952d38c4a5f20fb57b86aa8.ctex"]
+source_file="res://art/ui/combat/combat_ui_v2/bars/party_health_1.png"
+dest_files=["res://.godot/imported/party_health_1.png-c7182dbf826b426b69b3dd8ad9569941.ctex"]
 
 [params]
 
