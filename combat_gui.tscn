@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://c8aqefohsnwby"]
+[gd_scene load_steps=16 format=3 uid="uid://c8aqefohsnwby"]
 
 [ext_resource type="Script" path="res://combat_gui.gd" id="1_dgkmr"]
 [ext_resource type="Texture2D" uid="uid://bfaxao1a8bo76" path="res://art/ui/combat/combat_ui_v2/background.png" id="2_yp28c"]
@@ -16,6 +16,68 @@ texture = ExtResource("3_d7a1w")
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_rcx4a"]
 texture = ExtResource("4_s3jjx")
 
+[sub_resource type="Animation" id="Animation_n3irb"]
+resource_name = "swing_attack"
+length = 2.5
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [6, 0, 1, 2, 3, 4, 5, 6, 5, 6]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:animation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"attack_slash"]
+}
+
+[sub_resource type="Animation" id="Animation_sgarp"]
+length = 0.4
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:animation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"idle"]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_lyvkq"]
+_data = {
+"RESET": SubResource("Animation_sgarp"),
+"swing_attack": SubResource("Animation_n3irb")
+}
+
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ewjaf"]
 bg_color = Color(0.201527, 0.201527, 0.201526, 1)
 border_width_left = 3
@@ -26,54 +88,39 @@ border_color = Color(1, 1, 1, 1)
 
 [node name="CombatGUI" type="Control"]
 layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
+anchors_preset = 0
+offset_right = 640.0
+offset_bottom = 360.0
 script = ExtResource("1_dgkmr")
 
-[node name="Background" type="TextureRect" parent="."]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_right = 2688.0
-offset_bottom = 1512.0
-grow_horizontal = 2
-grow_vertical = 2
-scale = Vector2(0.3, 0.3)
+[node name="Background" type="Sprite2D" parent="."]
+position = Vector2(320, 180)
+scale = Vector2(0.167, 0.167)
 texture = ExtResource("2_yp28c")
+
+[node name="EnemySprite" type="AnimatedSprite2D" parent="."]
+position = Vector2(120, 160)
+sprite_frames = ExtResource("4_oc1yd")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="EnemySprite"]
 
 [node name="EnemyContainer" type="VBoxContainer" parent="."]
 layout_mode = 1
-anchors_preset = 6
-anchor_left = 1.0
-anchor_top = 0.5
-anchor_right = 1.0
-anchor_bottom = 0.5
-offset_left = -1152.0
-offset_top = -193.0
-offset_right = -776.0
-offset_bottom = 80.0
-grow_horizontal = 0
+anchors_preset = 9
+anchor_bottom = 1.0
+offset_left = 50.0
+offset_top = 100.0
+offset_right = 194.0
+offset_bottom = -116.0
 grow_vertical = 2
-
-[node name="EnemySprite" type="AnimatedSprite2D" parent="EnemyContainer"]
-position = Vector2(186, 110)
-scale = Vector2(2, 2)
-sprite_frames = ExtResource("4_oc1yd")
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="EnemyContainer/EnemySprite"]
 
 [node name="HealthBarControl" type="Control" parent="EnemyContainer"]
 layout_mode = 2
 
 [node name="HealthBar" type="ProgressBar" parent="EnemyContainer/HealthBarControl"]
-layout_mode = 2
-offset_top = -27.0
-offset_right = 376.0
-offset_bottom = 40.0
+layout_mode = 0
+offset_right = 144.0
+offset_bottom = 32.0
 theme_override_styles/background = SubResource("StyleBoxTexture_rf5w2")
 theme_override_styles/fill = SubResource("StyleBoxTexture_rcx4a")
 step = 1.0
@@ -87,50 +134,49 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -38.0
-offset_top = -15.5
-offset_right = 42.0
-offset_bottom = 16.5
+offset_left = -21.0
+offset_top = -7.0
+offset_right = 27.0
+offset_bottom = 9.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_fonts/font = ExtResource("7_0tnrd")
-theme_override_font_sizes/font_size = 32
 text = "15/24"
+
+[node name="PlayerSprite" type="AnimatedSprite2D" parent="."]
+position = Vector2(465, 136)
+sprite_frames = ExtResource("8_hq5nd")
+animation = &"idle"
+script = ExtResource("9_w2uuc")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="PlayerSprite"]
+libraries = {
+"": SubResource("AnimationLibrary_lyvkq")
+}
+
+[node name="AnimationTimer" type="Timer" parent="PlayerSprite"]
+one_shot = true
 
 [node name="PlayerContainer" type="VBoxContainer" parent="."]
 layout_mode = 1
-anchors_preset = 4
-anchor_top = 0.5
-anchor_bottom = 0.5
-offset_left = 584.0
-offset_top = -198.0
-offset_right = 960.0
-offset_bottom = 75.0
+anchors_preset = 11
+anchor_left = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -226.0
+offset_top = 100.0
+offset_right = -82.0
+offset_bottom = -116.0
+grow_horizontal = 0
 grow_vertical = 2
-
-[node name="PlayerSprite" type="AnimatedSprite2D" parent="PlayerContainer"]
-position = Vector2(305, 106)
-scale = Vector2(2, 2)
-sprite_frames = ExtResource("8_hq5nd")
-animation = &"attack_slash"
-frame = 5
-frame_progress = 0.0104956
-script = ExtResource("9_w2uuc")
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="PlayerContainer/PlayerSprite"]
-
-[node name="AnimationTimer" type="Timer" parent="PlayerContainer/PlayerSprite"]
-one_shot = true
 
 [node name="HealthBarControl" type="Control" parent="PlayerContainer"]
 layout_mode = 2
 
 [node name="HealthBar" type="ProgressBar" parent="PlayerContainer/HealthBarControl"]
 layout_mode = 2
-offset_left = 147.0
-offset_top = -38.0
-offset_right = 523.0
-offset_bottom = 29.0
+offset_right = 144.0
+offset_bottom = 32.0
 theme_override_styles/background = SubResource("StyleBoxTexture_rf5w2")
 theme_override_styles/fill = SubResource("StyleBoxTexture_rcx4a")
 step = 1.0
@@ -144,19 +190,19 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -38.0
-offset_top = -15.5
-offset_right = 42.0
-offset_bottom = 16.5
+offset_left = -21.0
+offset_top = -7.0
+offset_right = 27.0
+offset_bottom = 9.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_fonts/font = ExtResource("7_0tnrd")
-theme_override_font_sizes/font_size = 32
 text = "15/24"
 
 [node name="SpellsComponent" parent="PlayerContainer" instance=ExtResource("9_a5vcp")]
 
 [node name="ActionsPanel" type="Panel" parent="."]
+visible = false
 layout_mode = 1
 anchors_preset = 12
 anchor_top = 1.0
@@ -218,7 +264,7 @@ theme_override_styles/normal = SubResource("StyleBoxFlat_ewjaf")
 text = "Steal
 "
 
-[connection signal="spell_animation" from="." to="PlayerContainer/PlayerSprite" method="_on_combat_gui_spell_animation"]
-[connection signal="timeout" from="PlayerContainer/PlayerSprite/AnimationTimer" to="PlayerContainer/PlayerSprite" method="_on_animation_timer_timeout"]
+[connection signal="spell_animation" from="." to="PlayerSprite" method="_on_combat_gui_spell_animation"]
+[connection signal="timeout" from="PlayerSprite/AnimationTimer" to="PlayerSprite" method="_on_animation_timer_timeout"]
 [connection signal="pressed" from="ActionsPanel/MarginContainer/ActionsContainer/AttackButton" to="." method="_on_attack_button_pressed"]
 [connection signal="pressed" from="ActionsPanel/MarginContainer/ActionsContainer/SpellsButton" to="." method="_on_spells_button_pressed"]
