@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bg5fce6nh5758"
-path="res://.godot/imported/gold_background.png-c63fbbf7af60db398e378241317f5108.ctex"
+uid="uid://caufgpbubo4ne"
+path="res://.godot/imported/red_bar.png-af6946bd2b9c969f9cc3e495748f5119.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://art/combat/health_bars/gold_background.png"
-dest_files=["res://.godot/imported/gold_background.png-c63fbbf7af60db398e378241317f5108.ctex"]
+source_file="res://art/ui/combat/combat_ui_v1/health_bars/red_bar.png"
+dest_files=["res://.godot/imported/red_bar.png-af6946bd2b9c969f9cc3e495748f5119.ctex"]
 
 [params]
 
