@@ -1,8 +1,13 @@
 extends Node
 
 @export var combatHUDScene : PackedScene
+@onready var party_manager = $PartyManager
 
-func start_combat_scene(party : Array[CharacterBody2D], enemies : Array[Area2D], path):
+var party = PartyManager.get_party_members()
+
+# TODO: Should we consider having an enemies_manager autoloaded?
+# 		Rather than having enemies in party_manger, should it be separated?
+func start_combat_scene(enemies : Array[Area2D], path):
 	combatHUDScene = load(path)
 	
 	if not combatHUDScene:
@@ -10,7 +15,6 @@ func start_combat_scene(party : Array[CharacterBody2D], enemies : Array[Area2D],
 		return
 	
 	get_tree().change_scene_to_packed(combatHUDScene)
-	
 	
 
 # Called when the node enters the scene tree for the first time.
