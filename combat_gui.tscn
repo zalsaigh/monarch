@@ -7,7 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://cx31yayiwhamx" path="res://art/ui/combat/combat_ui_v1/health_bars/green_bar.png" id="4_s3jjx"]
 [ext_resource type="FontFile" uid="uid://ddqgixpjigtib" path="res://fonts/NESCyrillic.ttf" id="7_0tnrd"]
 [ext_resource type="SpriteFrames" uid="uid://b615m8ddqw36u" path="res://player_combat.tres" id="8_hq5nd"]
-[ext_resource type="PackedScene" uid="uid://dprvni6fde6dc" path="res://spells_component.tscn" id="9_a5vcp"]
+[ext_resource type="PackedScene" uid="uid://dprvni6fde6dc" path="res://src/components/spells_component.tscn" id="9_a5vcp"]
 [ext_resource type="Script" path="res://PlayerSprite.gd" id="9_w2uuc"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_rf5w2"]
@@ -15,6 +15,33 @@ texture = ExtResource("3_d7a1w")
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_rcx4a"]
 texture = ExtResource("4_s3jjx")
+
+[sub_resource type="Animation" id="Animation_sgarp"]
+length = 0.4
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:animation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"idle"]
+}
 
 [sub_resource type="Animation" id="Animation_n3irb"]
 resource_name = "swing_attack"
@@ -43,33 +70,6 @@ tracks/1/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [&"attack_slash"]
-}
-
-[sub_resource type="Animation" id="Animation_sgarp"]
-length = 0.4
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.2, 0.3),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
-"update": 1,
-"values": [0, 1, 2, 0]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath(".:animation")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [&"idle"]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_lyvkq"]

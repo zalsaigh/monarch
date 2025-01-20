@@ -15,21 +15,21 @@ func _ready() -> void:
 
 
 # Add a new spell resource to the unit's list of spells
-func add_spell(spell: Spell):
-	assert(spells.size() != MAX_SPELLS)
+func add_spell(spell: Spell) -> bool:
+	if (spells.size() == MAX_SPELLS):
+		return false
 	
 	spells.append(spell)
+	return true
 
 
 # Remove spell from unit's list of spells specified by an index
 func remove_spell(spell_index: int):
-	assert(spell_index < spells.size())
-	
 	spells.remove_at(spell_index)
 
 
 # Get the spell resource specified by an index in the unit's spell list
 func get_spell(spell_index: int) -> Spell:
-	assert(spell_index < spells.size())
-	
+	if (spell_index >= spells.size()):
+		return null
 	return spells[spell_index]
