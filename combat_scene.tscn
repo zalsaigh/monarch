@@ -1,0 +1,272 @@
+[gd_scene load_steps=16 format=3 uid="uid://c8aqefohsnwby"]
+
+[ext_resource type="Script" path="res://combat_scene.gd" id="1_tqoc4"]
+[ext_resource type="Texture2D" uid="uid://dh5dnlhmds4vb" path="res://art/ui/combat/combat_ui_v1/health_bars/gray_bar.png" id="2_xscea"]
+[ext_resource type="Texture2D" uid="uid://cx31yayiwhamx" path="res://art/ui/combat/combat_ui_v1/health_bars/green_bar.png" id="3_3dlnl"]
+[ext_resource type="FontFile" uid="uid://ddqgixpjigtib" path="res://fonts/NESCyrillic.ttf" id="4_6yqoq"]
+[ext_resource type="PackedScene" uid="uid://dprvni6fde6dc" path="res://spells_component.tscn" id="5_sdpre"]
+[ext_resource type="Texture2D" uid="uid://bfaxao1a8bo76" path="res://art/ui/combat/combat_ui_v2/background.png" id="6_qvu1w"]
+[ext_resource type="SpriteFrames" uid="uid://15f7dy8881tn" path="res://enemy.tres" id="7_dijtu"]
+[ext_resource type="SpriteFrames" uid="uid://b615m8ddqw36u" path="res://player_combat.tres" id="8_brg33"]
+[ext_resource type="Script" path="res://PlayerSprite.gd" id="9_1qotk"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_rf5w2"]
+texture = ExtResource("2_xscea")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_rcx4a"]
+texture = ExtResource("3_3dlnl")
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ewjaf"]
+bg_color = Color(0.201527, 0.201527, 0.201526, 1)
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+border_color = Color(1, 1, 1, 1)
+
+[sub_resource type="Animation" id="Animation_sgarp"]
+length = 0.4
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:animation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"idle"]
+}
+
+[sub_resource type="Animation" id="Animation_n3irb"]
+resource_name = "swing_attack"
+length = 2.5
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [6, 0, 1, 2, 3, 4, 5, 6, 5, 6]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:animation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"attack_slash"]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_lyvkq"]
+_data = {
+"RESET": SubResource("Animation_sgarp"),
+"swing_attack": SubResource("Animation_n3irb")
+}
+
+[node name="CombatScene" type="Node2D"]
+script = ExtResource("1_tqoc4")
+
+[node name="CombatUI" type="CanvasLayer" parent="."]
+
+[node name="EnemyContainer" type="VBoxContainer" parent="CombatUI"]
+anchors_preset = 9
+anchor_bottom = 1.0
+offset_left = 53.0
+offset_top = 46.0
+offset_right = 197.0
+offset_bottom = -170.0
+grow_vertical = 2
+
+[node name="HealthBarControl" type="Control" parent="CombatUI/EnemyContainer"]
+layout_mode = 2
+
+[node name="HealthBar" type="ProgressBar" parent="CombatUI/EnemyContainer/HealthBarControl"]
+layout_mode = 0
+offset_right = 144.0
+offset_bottom = 32.0
+theme_override_styles/background = SubResource("StyleBoxTexture_rf5w2")
+theme_override_styles/fill = SubResource("StyleBoxTexture_rcx4a")
+step = 1.0
+value = 60.0
+show_percentage = false
+
+[node name="Health" type="Label" parent="CombatUI/EnemyContainer/HealthBarControl/HealthBar"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -21.0
+offset_top = -7.0
+offset_right = 27.0
+offset_bottom = 9.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("4_6yqoq")
+text = "15/24"
+
+[node name="PlayerContainer" type="VBoxContainer" parent="CombatUI"]
+anchors_preset = 11
+anchor_left = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -237.0
+offset_top = 45.0
+offset_right = -93.0
+offset_bottom = -171.0
+grow_horizontal = 0
+grow_vertical = 2
+
+[node name="HealthBarControl" type="Control" parent="CombatUI/PlayerContainer"]
+layout_mode = 2
+
+[node name="HealthBar" type="ProgressBar" parent="CombatUI/PlayerContainer/HealthBarControl"]
+layout_mode = 2
+offset_right = 144.0
+offset_bottom = 32.0
+theme_override_styles/background = SubResource("StyleBoxTexture_rf5w2")
+theme_override_styles/fill = SubResource("StyleBoxTexture_rcx4a")
+step = 1.0
+value = 60.0
+show_percentage = false
+
+[node name="Health" type="Label" parent="CombatUI/PlayerContainer/HealthBarControl/HealthBar"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -21.0
+offset_top = -7.0
+offset_right = 27.0
+offset_bottom = 9.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("4_6yqoq")
+text = "15/24"
+
+[node name="SpellsComponent" parent="CombatUI/PlayerContainer" instance=ExtResource("5_sdpre")]
+
+[node name="ActionsPanel" type="Panel" parent="CombatUI"]
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -80.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="ActionsButtons" type="MarginContainer" parent="CombatUI/ActionsPanel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 5.0
+offset_top = 20.0
+offset_right = -8.0
+offset_bottom = -20.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ActionsContainer" type="HBoxContainer" parent="CombatUI/ActionsPanel/ActionsButtons"]
+layout_mode = 2
+theme_override_constants/separation = 35
+alignment = 1
+
+[node name="AttackButton" type="Button" parent="CombatUI/ActionsPanel/ActionsButtons/ActionsContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_fonts/font = ExtResource("4_6yqoq")
+theme_override_font_sizes/font_size = 32
+theme_override_styles/normal = SubResource("StyleBoxFlat_ewjaf")
+text = "Attack"
+
+[node name="DefendButton" type="Button" parent="CombatUI/ActionsPanel/ActionsButtons/ActionsContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_fonts/font = ExtResource("4_6yqoq")
+theme_override_font_sizes/font_size = 32
+theme_override_styles/normal = SubResource("StyleBoxFlat_ewjaf")
+text = "Defend"
+
+[node name="SpellsButton" type="Button" parent="CombatUI/ActionsPanel/ActionsButtons/ActionsContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_fonts/font = ExtResource("4_6yqoq")
+theme_override_font_sizes/font_size = 32
+theme_override_styles/normal = SubResource("StyleBoxFlat_ewjaf")
+action_mode = 0
+text = "Spells
+"
+
+[node name="StealButton" type="Button" parent="CombatUI/ActionsPanel/ActionsButtons/ActionsContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_fonts/font = ExtResource("4_6yqoq")
+theme_override_font_sizes/font_size = 32
+theme_override_styles/normal = SubResource("StyleBoxFlat_ewjaf")
+text = "Steal
+"
+
+[node name="CombatWorld" type="Node2D" parent="."]
+
+[node name="Background" type="Sprite2D" parent="CombatWorld"]
+position = Vector2(320, 180)
+scale = Vector2(0.167, 0.167)
+texture = ExtResource("6_qvu1w")
+
+[node name="Parties" type="Node2D" parent="CombatWorld"]
+
+[node name="Enemy" type="Node2D" parent="CombatWorld/Parties"]
+
+[node name="EnemySprite" type="AnimatedSprite2D" parent="CombatWorld/Parties/Enemy"]
+position = Vector2(120, 160)
+sprite_frames = ExtResource("7_dijtu")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="CombatWorld/Parties/Enemy/EnemySprite"]
+
+[node name="Playable" type="Node2D" parent="CombatWorld/Parties"]
+
+[node name="PlayerSprite" type="AnimatedSprite2D" parent="CombatWorld/Parties/Playable"]
+position = Vector2(465, 136)
+sprite_frames = ExtResource("8_brg33")
+animation = &"idle"
+script = ExtResource("9_1qotk")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="CombatWorld/Parties/Playable/PlayerSprite"]
+libraries = {
+"": SubResource("AnimationLibrary_lyvkq")
+}
+
+[node name="AnimationTimer" type="Timer" parent="CombatWorld/Parties/Playable/PlayerSprite"]
+one_shot = true
+
+[connection signal="spell_animation" from="." to="CombatWorld/Parties/Playable/PlayerSprite" method="_on_combat_gui_spell_animation"]
+[connection signal="pressed" from="CombatUI/ActionsPanel/ActionsButtons/ActionsContainer/AttackButton" to="." method="_on_attack_button_pressed"]
+[connection signal="pressed" from="CombatUI/ActionsPanel/ActionsButtons/ActionsContainer/SpellsButton" to="." method="_on_spells_button_pressed"]
+[connection signal="timeout" from="CombatWorld/Parties/Playable/PlayerSprite/AnimationTimer" to="CombatWorld/Parties/Playable/PlayerSprite" method="_on_animation_timer_timeout"]

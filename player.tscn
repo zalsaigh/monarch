@@ -28,7 +28,6 @@ shape = SubResource("CapsuleShape2D_8s1xf")
 script = ExtResource("4_85fth")
 
 [node name="Camera2D" type="Camera2D" parent="."]
-zoom = Vector2(3, 3)
 
 [node name="AttackComponent" parent="." instance=ExtResource("5_xlubi")]
 attacks = Array[ExtResource("6_bcgn8")]([ExtResource("6_i87wm"), ExtResource("7_u0ent")])
