@@ -1,7 +1,7 @@
 class_name Player extends CharacterBody2D
 
 enum FACE_DIRECTIONS {LEFT, RIGHT}
-const SPEED = 50.0
+const SPEED = 500.0
 var facing = FACE_DIRECTIONS.LEFT
 
 @onready var sprite : MonarchSprite = $AnimatedSprite2D

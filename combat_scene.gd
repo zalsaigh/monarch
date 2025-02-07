@@ -1,4 +1,4 @@
-extends Control
+extends Node2D
 
 signal spell_animation(duration: int)
 
