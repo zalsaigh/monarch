@@ -1,4 +1,4 @@
-extends Control
+extends Node2D
 
 signal spell_animation(duration: int)
 
@@ -16,9 +16,10 @@ func _process(delta):
 	pass
 
 
-
 func _on_attack_button_pressed():
-	pass # Replace with function body.
+	# TODO: remove this, just used to test trigger end of combat
+	queue_free()
+	CombatManager.end_combat_scene()
 
 
 # Called when Spells button is pressed (used to test the spells component)
@@ -26,7 +27,7 @@ func _on_spells_button_pressed() -> void:
 	print("Clicked Spell Button")
 	
 	# TODO: get a specific unit's spell component instead of hardcoding player
-	var spells_component = $PlayerContainer/SpellsComponent
+	var spells_component = $CombatUI/PlayerContainer/SpellsComponent
 	if spells_component.is_in_group("has_spells"):
 		# Get the next spell (for debugging purposes)
 		var spell_index = curr_spell % spells_component.spells.size()
