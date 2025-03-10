@@ -16,3 +16,5 @@ mono_crash.*.json
 
 # IDEA ignores
 .idea/
+
+.vscode/settings.json
