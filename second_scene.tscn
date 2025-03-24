@@ -1,6 +1,6 @@
 [gd_scene load_steps=7 format=4 uid="uid://bnuvhpsslqch8"]
 
-[ext_resource type="Script" uid="uid://bxxlkfdhux77v" path="res://second_scene.gd" id="1_de81m"]
+[ext_resource type="Script" uid="uid://litco3jfcil2" path="res://second_scene.gd" id="1_de81m"]
 [ext_resource type="PackedScene" uid="uid://cf3emyoet5j64" path="res://player.tscn" id="2_jttwt"]
 [ext_resource type="Texture2D" uid="uid://bckqmb1p7hc61" path="res://art/environment/basictiles.png" id="2_pjcvh"]
 [ext_resource type="PackedScene" uid="uid://2nua1vp74qf7" path="res://enemy.tscn" id="3_msafq"]
@@ -127,6 +127,7 @@ tile_map_data = PackedByteArray("AABCAAcAAAACAAYAAABCAAgAAAACAAYAAABCAAkAAAACAAY
 tile_set = SubResource("TileSet_hk1g2")
 
 [node name="Player" parent="." instance=ExtResource("2_jttwt")]
+SPEED = 300.0
 
 [node name="Enemy" parent="." groups=["enemy"] instance=ExtResource("3_msafq")]
 position = Vector2(1048, 307)

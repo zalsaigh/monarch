@@ -1,10 +1,9 @@
-[gd_scene load_steps=15 format=3 uid="uid://c8aqefohsnwby"]
+[gd_scene load_steps=14 format=3 uid="uid://c8aqefohsnwby"]
 
 [ext_resource type="Script" uid="uid://bxllfj66xx45r" path="res://combat_scene.gd" id="1_tqoc4"]
 [ext_resource type="Texture2D" uid="uid://dh5dnlhmds4vb" path="res://art/ui/combat/combat_ui_v1/health_bars/gray_bar.png" id="2_xscea"]
 [ext_resource type="Texture2D" uid="uid://cx31yayiwhamx" path="res://art/ui/combat/combat_ui_v1/health_bars/green_bar.png" id="3_3dlnl"]
 [ext_resource type="FontFile" uid="uid://ddqgixpjigtib" path="res://fonts/NESCyrillic.ttf" id="4_6yqoq"]
-[ext_resource type="PackedScene" uid="uid://dprvni6fde6dc" path="res://src/components/spells_component.tscn" id="5_sdpre"]
 [ext_resource type="SpriteFrames" uid="uid://15f7dy8881tn" path="res://enemy.tres" id="7_dijtu"]
 [ext_resource type="SpriteFrames" uid="uid://b615m8ddqw36u" path="res://player_combat.tres" id="8_brg33"]
 [ext_resource type="Script" uid="uid://184i6wjbofd1" path="res://PlayerSprite.gd" id="9_1qotk"]
@@ -168,8 +167,6 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_fonts/font = ExtResource("4_6yqoq")
 text = "15/24"
-
-[node name="SpellsComponent" parent="CombatUI/PlayerContainer" instance=ExtResource("5_sdpre")]
 
 [node name="ActionsPanel" type="Panel" parent="CombatUI"]
 anchors_preset = 12
