@@ -8,11 +8,11 @@
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_xa3al"]
 render_priority = 0
 shader = ExtResource("1_3fodi")
+shader_parameter/MainTex = ExtResource("3_xuqa4")
 shader_parameter/DissolveTiling = Vector2(0.25, 0.2)
 shader_parameter/DissolveSpeed = Vector2(0, 0.2)
-shader_parameter/DissolveAmount = 0.399
-shader_parameter/MainTex = ExtResource("3_xuqa4")
 shader_parameter/Dissolve = ExtResource("2_87kq4")
+shader_parameter/DissolveAmount = 0.399
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_8jjf3"]
 gravity = Vector3(0, 0, 0)
@@ -23,11 +23,11 @@ color = Color(4, 1.25, 0.6, 0.8)
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_rd3yj"]
 render_priority = 0
 shader = ExtResource("1_3fodi")
+shader_parameter/MainTex = ExtResource("4_wyedk")
 shader_parameter/DissolveTiling = Vector2(1, 1)
 shader_parameter/DissolveSpeed = Vector2(0, 0)
-shader_parameter/DissolveAmount = 0.0
-shader_parameter/MainTex = ExtResource("4_wyedk")
 shader_parameter/Dissolve = ExtResource("2_87kq4")
+shader_parameter/DissolveAmount = 0.0
 
 [sub_resource type="Curve" id="Curve_qysm5"]
 _data = [Vector2(0, 0.01703), 0.0, 0.0, 0, 0, Vector2(0.300676, 1), 0.0, 0.0, 0, 0, Vector2(1, 0.0258856), -2.55041, 0.0, 0, 0]
