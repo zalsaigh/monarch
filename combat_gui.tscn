@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://c8aqefohsnwby"]
+[gd_scene load_steps=16 format=3 uid="uid://cw533s3flg165"]
 
 [ext_resource type="Script" path="res://combat_gui.gd" id="1_dgkmr"]
 [ext_resource type="Texture2D" uid="uid://bfaxao1a8bo76" path="res://art/ui/combat/combat_ui_v2/background.png" id="2_yp28c"]
