@@ -1,13 +1,8 @@
 extends Node
 
 @export var combatHUDScene : PackedScene
-@onready var party_manager = $PartyManager
 
-var party = PartyManager.get_party_members()
-
-# TODO: Should we consider having an enemies_manager autoloaded?
-# 		Rather than having enemies in party_manger, should it be separated?
-func start_combat_scene(enemies : Array[Area2D], path):
+func start_combat_scene(path):
 	combatHUDScene = load(path)
 	
 	if not combatHUDScene:

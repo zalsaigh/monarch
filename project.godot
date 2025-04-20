@@ -18,7 +18,6 @@ config/icon="res://icon.svg"
 [autoload]
 
 CombatManager="*res://combat_manager.gd"
-PartyManager="*res://party_manager.gd"
 
 [display]
 
