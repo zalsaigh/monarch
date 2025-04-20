@@ -1,11 +1,11 @@
-extends Node2D
+extends Node
 
 # Current unit's spells
 @export var MAX_SPELLS = 4
 var spells : Array[Spell]
 
 # Array prepopulated with a list of all possible spells
-var spell_database = load("res://spells/spell_database.tres")
+var spell_database = load("res://resources/spells/spell_database.tres")
 
 
 func _ready() -> void:
