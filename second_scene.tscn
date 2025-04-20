@@ -1,6 +1,6 @@
 [gd_scene load_steps=7 format=4 uid="uid://bnuvhpsslqch8"]
 
-[ext_resource type="Script" path="res://second_scene.gd" id="1_de81m"]
+[ext_resource type="Script" uid="uid://bxxlkfdhux77v" path="res://second_scene.gd" id="1_de81m"]
 [ext_resource type="PackedScene" uid="uid://cf3emyoet5j64" path="res://player.tscn" id="2_jttwt"]
 [ext_resource type="Texture2D" uid="uid://bckqmb1p7hc61" path="res://art/environment/basictiles.png" id="2_pjcvh"]
 [ext_resource type="PackedScene" uid="uid://2nua1vp74qf7" path="res://enemy.tscn" id="3_msafq"]

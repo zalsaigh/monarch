@@ -1,8 +1,8 @@
 [gd_scene load_steps=23 format=4 uid="uid://k5tpa0ffbo52"]
 
 [ext_resource type="PackedScene" uid="uid://cf3emyoet5j64" path="res://player.tscn" id="1_xofkj"]
-[ext_resource type="Script" path="res://HealthComponent.gd" id="2_v5fma"]
-[ext_resource type="Script" path="res://CaveEntrance.gd" id="3_6viit"]
+[ext_resource type="Script" uid="uid://bjgw7bk3n3umb" path="res://HealthComponent.gd" id="2_v5fma"]
+[ext_resource type="Script" uid="uid://c1v017o7ollqi" path="res://CaveEntrance.gd" id="3_6viit"]
 [ext_resource type="Texture2D" uid="uid://bckqmb1p7hc61" path="res://art/environment/basictiles.png" id="4_fkn26"]
 [ext_resource type="Shader" uid="uid://dlyd078xhpgso" path="res://art/vfx/shaders/Fire.tres" id="4_n84ub"]
 [ext_resource type="Texture2D" uid="uid://enlx3giy8wij" path="res://art/vfx/textures/Flame01.png" id="5_ln8lx"]
@@ -112,11 +112,11 @@ sources/0 = SubResource("TileSetAtlasSource_xxrbe")
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_gd82a"]
 render_priority = 0
 shader = ExtResource("4_n84ub")
+shader_parameter/MainTex = ExtResource("5_ln8lx")
 shader_parameter/DissolveTiling = Vector2(0.25, 0.2)
 shader_parameter/DissolveSpeed = Vector2(0, 0.2)
-shader_parameter/DissolveAmount = 0.399
-shader_parameter/MainTex = ExtResource("5_ln8lx")
 shader_parameter/Dissolve = ExtResource("5_nt8yq")
+shader_parameter/DissolveAmount = 0.399
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_s5orn"]
 gravity = Vector3(0, 0, 0)
@@ -127,11 +127,11 @@ color = Color(4, 1.25, 0.6, 0.8)
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_msd4h"]
 render_priority = 0
 shader = ExtResource("4_n84ub")
+shader_parameter/MainTex = ExtResource("7_54egv")
 shader_parameter/DissolveTiling = Vector2(1, 1)
 shader_parameter/DissolveSpeed = Vector2(0, 0)
-shader_parameter/DissolveAmount = 0.0
-shader_parameter/MainTex = ExtResource("7_54egv")
 shader_parameter/Dissolve = ExtResource("5_nt8yq")
+shader_parameter/DissolveAmount = 0.0
 
 [sub_resource type="Curve" id="Curve_48rrd"]
 _data = [Vector2(0, 0.01703), 0.0, 0.0, 0, 0, Vector2(0.300676, 1), 0.0, 0.0, 0, 0, Vector2(1, 0.0258856), -2.55041, 0.0, 0, 0]
