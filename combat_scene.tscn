@@ -1,6 +1,6 @@
 [gd_scene load_steps=16 format=3 uid="uid://c8aqefohsnwby"]
 
-[ext_resource type="Script" path="res://combat_scene.gd" id="1_tqoc4"]
+[ext_resource type="Script" uid="uid://ct8rp2rwbaxms" path="res://combat_scene.gd" id="1_tqoc4"]
 [ext_resource type="Texture2D" uid="uid://dh5dnlhmds4vb" path="res://art/ui/combat/combat_ui_v1/health_bars/gray_bar.png" id="2_xscea"]
 [ext_resource type="Texture2D" uid="uid://cx31yayiwhamx" path="res://art/ui/combat/combat_ui_v1/health_bars/green_bar.png" id="3_3dlnl"]
 [ext_resource type="FontFile" uid="uid://ddqgixpjigtib" path="res://fonts/NESCyrillic.ttf" id="4_6yqoq"]
@@ -8,7 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://bfaxao1a8bo76" path="res://art/ui/combat/combat_ui_v2/background.png" id="6_qvu1w"]
 [ext_resource type="SpriteFrames" uid="uid://15f7dy8881tn" path="res://enemy.tres" id="7_dijtu"]
 [ext_resource type="SpriteFrames" uid="uid://b615m8ddqw36u" path="res://player_combat.tres" id="8_brg33"]
-[ext_resource type="Script" path="res://PlayerSprite.gd" id="9_1qotk"]
+[ext_resource type="Script" uid="uid://184i6wjbofd1" path="res://PlayerSprite.gd" id="9_1qotk"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_rf5w2"]
 texture = ExtResource("2_xscea")
@@ -82,8 +82,8 @@ tracks/1/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_lyvkq"]
 _data = {
-"RESET": SubResource("Animation_sgarp"),
-"swing_attack": SubResource("Animation_n3irb")
+&"RESET": SubResource("Animation_sgarp"),
+&"swing_attack": SubResource("Animation_n3irb")
 }
 
 [node name="CombatScene" type="Node2D"]
@@ -260,7 +260,7 @@ script = ExtResource("9_1qotk")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="CombatGameplay/Parties/Playable/PlayerSprite"]
 libraries = {
-"": SubResource("AnimationLibrary_lyvkq")
+&"": SubResource("AnimationLibrary_lyvkq")
 }
 
 [node name="AnimationTimer" type="Timer" parent="CombatGameplay/Parties/Playable/PlayerSprite"]

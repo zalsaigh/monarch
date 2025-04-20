@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://cfppw4m3os8rb"]
 
 [ext_resource type="PackedScene" uid="uid://c8aqefohsnwby" path="res://combat_scene.tscn" id="1_0p71t"]
-[ext_resource type="Script" path="res://combat_manager.gd" id="1_6yvsg"]
+[ext_resource type="Script" uid="uid://dmou7dolwho0s" path="res://combat_manager.gd" id="1_6yvsg"]
 
 [node name="CombatManager" type="Node" groups=["combat"]]
 script = ExtResource("1_6yvsg")
