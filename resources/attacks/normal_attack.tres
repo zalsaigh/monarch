@@ -1,9 +1,9 @@
 [gd_resource type="Resource" script_class="Attack" load_steps=2 format=3 uid="uid://cs60ixhmh86wm"]
 
-[ext_resource type="Script" path="res://resources/attack_rsc.gd" id="1_u4bsk"]
+[ext_resource type="Script" uid="uid://dd1246q3kr7u8" path="res://resources/attacks/attack_rsc.gd" id="1_56r1r"]
 
 [resource]
-script = ExtResource("1_u4bsk")
+script = ExtResource("1_56r1r")
 name = "Normal Attack"
 description = "Basic attack for the character"
 damage = 10.0

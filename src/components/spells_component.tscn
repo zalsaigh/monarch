@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://dprvni6fde6dc"]
 
-[ext_resource type="Script" path="res://src/components/spells_component.gd" id="1_xm8yn"]
+[ext_resource type="Script" uid="uid://dpat2vlglhmvs" path="res://src/components/spells_component.gd" id="1_xm8yn"]
 
-[node name="SpellsComponent" type="Node2D" groups=["has_spells"]]
+[node name="SpellsComponent" type="Node" groups=["has_spells"]]
 script = ExtResource("1_xm8yn")
