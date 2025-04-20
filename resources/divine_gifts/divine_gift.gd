@@ -5,7 +5,7 @@ enum DivineGiftType {
 	STEAL_SPELLS
 }
 
-# General Spell Attributes
+# General Divine Gift Attributes
 @export var name: String # Used to overwrite button name in combat
 @export var description: String
 @export var divine_gift: DivineGiftType
