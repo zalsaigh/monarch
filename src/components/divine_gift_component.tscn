@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://coepmnkl23pdw"]
+
+[ext_resource type="Script" uid="uid://t037q272etvh" path="res://src/components/divine_gift_component.gd" id="1_271up"]
+
+[node name="DivineGiftComponent" type="Node"]
+script = ExtResource("1_271up")

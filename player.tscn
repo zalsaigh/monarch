@@ -5,7 +5,7 @@
 [ext_resource type="Script" uid="uid://bn30k0xs8ptdn" path="res://AnimatedSprite2D.gd" id="3_vc6mf"]
 [ext_resource type="Script" uid="uid://kdor8udfe8ks" path="res://CollisionShape2D.gd" id="4_85fth"]
 [ext_resource type="PackedScene" uid="uid://cdm43kunrogx" path="res://src/components/attack_component.tscn" id="5_xlubi"]
-[ext_resource type="Script" uid="uid://dd1246q3kr7u8" path="res://resources/attack_rsc.gd" id="6_bcgn8"]
+[ext_resource type="Script" uid="uid://dd1246q3kr7u8" path="res://resources/attacks/attack_rsc.gd" id="6_bcgn8"]
 [ext_resource type="Resource" uid="uid://cs60ixhmh86wm" path="res://resources/attacks/normal_attack.tres" id="6_i87wm"]
 [ext_resource type="Resource" uid="uid://hodugild11n5" path="res://resources/attacks/slash_attack.tres" id="7_u0ent"]
 

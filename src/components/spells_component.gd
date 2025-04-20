@@ -1,4 +1,4 @@
-extends Node2D
+extends Node
 
 # Current unit's spells
 @export var MAX_SPELLS = 4

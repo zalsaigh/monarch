@@ -20,3 +20,8 @@ func _ready():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	pass
+
+
+# TODO: Implement this to interact with party manager
+func steal_spell():
+	pass

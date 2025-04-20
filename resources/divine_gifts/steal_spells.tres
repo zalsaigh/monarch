@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="DivineGift" load_steps=2 format=3 uid="uid://cpll3f8nqjv27"]
+
+[ext_resource type="Script" uid="uid://ufvmls6ohupj" path="res://resources/divine_gifts/divine_gift.gd" id="1_1ec7g"]
+
+[resource]
+script = ExtResource("1_1ec7g")
+name = "Steal"
+description = "Allows the player to steal an enemy spells that persists outside of combat"
+divine_gift = 0
+metadata/_custom_type_script = "uid://ufvmls6ohupj"
