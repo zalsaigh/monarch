@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://cf3emyoet5j64"]
+[gd_scene load_steps=11 format=3 uid="uid://cf3emyoet5j64"]
 
 [ext_resource type="Script" uid="uid://bnoci6v7xaeev" path="res://player.gd" id="1_ft17v"]
 [ext_resource type="SpriteFrames" uid="uid://b06a3lft4r7qs" path="res://player_overworld.tres" id="2_3mhg4"]
@@ -8,6 +8,7 @@
 [ext_resource type="Script" uid="uid://dd1246q3kr7u8" path="res://resources/attack_rsc.gd" id="6_bcgn8"]
 [ext_resource type="Resource" uid="uid://cs60ixhmh86wm" path="res://resources/attacks/normal_attack.tres" id="6_i87wm"]
 [ext_resource type="Resource" uid="uid://hodugild11n5" path="res://resources/attacks/slash_attack.tres" id="7_u0ent"]
+[ext_resource type="PackedScene" uid="uid://b18463a7xv7jr" path="res://src/components/defend_component.tscn" id="9_uluyt"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_8s1xf"]
 height = 38.0
@@ -31,3 +32,4 @@ script = ExtResource("4_85fth")
 
 [node name="AttackComponent" parent="." instance=ExtResource("5_xlubi")]
 attacks = Array[ExtResource("6_bcgn8")]([ExtResource("6_i87wm"), ExtResource("7_u0ent")])
+[node name="DefendComponent" parent="." instance=ExtResource("9_uluyt")]
